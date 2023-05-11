@@ -1,62 +1,54 @@
-name: Bug Report
-description: File a bug report
-title: "[Bug]: "
-labels: ["bug", "triage"]
+name: Official status request
+description: File a offical status request
+title: "[OFICIAL]: Your repository or project name"
+labels: ["official status request"]
 assignees:
-  - octocat
+  - cynthia-sg
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        In Artifact Hub, the `official` status means that the publisher **owns the software** a package primarily focuses on. If we consider the *example* of a [chart used to install Consul](https://artifacthub.io/packages/helm/hashicorp/consul), to obtain the `official` status the publisher should be the owner of the Consul software (*HashiCorp* in this case), not just the chart. Similarly, a [Tekton task used to perform operations on Google Cloud](https://artifacthub.io/packages/tekton-task/tekton-catalog-tasks/gcloud) would need to be published by *Google* to be marked as `official`. In the case of a MySQL operator, only one published by *MySQL/Oracle* would be considered `official`.
+
+        The `official` status can be granted at the **repository or package level**. When it is granted for a repository, all packages available on it will display the `official` badge, so all packages in the repository **must** be official. If only some of the packages in your repository are official, please list them in the `Official packages` field below.
   - type: input
-    id: contact
+    id: repo_name
     attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
+      label: Repository name
+      description: Repository name in `artifacthub.io`
+      placeholder: ex. prometheus
+    validations:
+      required: true
+  - type: textarea
+    id: packages
+    attributes:
+      label: Official packages
+      description: leave empty if all packages in the repository are official
+      placeholder: package1
+      value: "..."
+    validations:
+      required: false
+  - type: input
+    id: code
+    attributes:
+      label: Source code
+      description: if available
     validations:
       required: false
   - type: textarea
-    id: what-happened
+    id: urls
     attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
-    validations:
-      required: true
-  - type: dropdown
-    id: version
-    attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-    validations:
-      required: true
-  - type: dropdown
-    id: browsers
-    attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
-  - type: textarea
-    id: logs
-    attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
+      label: Other relevant URLs
+      description: if there are any other urls that can help us with the verification process, please include them here
   - type: checkboxes
-    id: terms
+    id: requirements
     attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      label: Requirements
+      description: Before applying for this status, please make sure your repository complies with the following requirements
       options:
-        - label: I agree to follow this project's Code of Conduct
+        - label: The repository has already obtained the [Verified Publisher](https://artifacthub.io/docs/topics/repositories/#verified-publisher) status.
+          required: true
+        - label: The user requesting the status is the publisher of the repository in Artifact Hub, or belongs to the organization publishing it.
+          required: true
+        - label: All official packages available in the repository provide a `README.md` file with some documentation that can be displayed on Artifact Hub.
           required: true
