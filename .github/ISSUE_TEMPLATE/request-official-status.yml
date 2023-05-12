@@ -23,7 +23,7 @@ body:
     id: packages
     attributes:
       label: Official packages
-      description: leave empty if all packages in the repository are official
+      description: Leave empty if all packages in the repository are official
       placeholder: package1
       value: "..."
     validations:
@@ -39,14 +39,13 @@ body:
     id: code
     attributes:
       label: Source code
-      description: if available
     validations:
       required: false
   - type: textarea
     id: urls
     attributes:
       label: Other relevant URLs
-      description: if there are any other urls that can help us with the verification process, please include them here
+      description: If there are any other urls that can help us with the verification process, please include them here
   - type: checkboxes
     id: requirements
     attributes:
