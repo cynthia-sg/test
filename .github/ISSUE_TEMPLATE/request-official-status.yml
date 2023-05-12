@@ -28,6 +28,13 @@ body:
       value: "..."
     validations:
       required: false
+  - type: checkboxes
+    id: cncf
+    attributes:
+      label: CNCF
+      options:
+        - label: Is the publisher a CNCF project? (graduated, incubating or sandbox)
+          required: false
   - type: input
     id: code
     attributes:
